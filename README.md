@@ -63,3 +63,13 @@ une liste de string dans un premier temps.
 * Exécuter `dotnet test`  
 * Coder les accesseurs indexeurs
 * Coder méthodes de tests Count et Index
+
+## Refactoring de la classe MyCollection en classe générique
+
+Réécriture de la classe `MyCollection` qui devient le générique `MyCollection<T>`  
+
+Modification de la classe de test: `new MyCollection()` devient `new MyCollection<string>()`  
+
+Renommer MyCollectionTest.cs en MyCollectionStringTest.cs et renommer la classe de la même façon.
+
+Dupliquer MyCollectionStringTest en MyCollectionCharTest et adapter le code de test en conséquence.

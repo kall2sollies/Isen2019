@@ -2,13 +2,13 @@ using System;
 
 namespace Isen.DotNet.Library.Lists
 {    
-    public class MyCollection
+    public class MyCollection<T>
     {
-        private string[] _values;
+        private T[] _values;
 
         public MyCollection()
         {
-            _values = new string[0];
+            _values = new T[0];
         }
 
         /// <summary>
@@ -19,13 +19,13 @@ namespace Isen.DotNet.Library.Lists
         /// <summary>
         /// Accès aux valeurs de la liste
         /// </summary>
-        public string[] Values => _values;
+        public T[] Values => _values;
 
         /// <summary>
         /// Accesseur indexeur
         /// </summary>
         /// <value></value>
-        public string this[int index]
+        public T this[int index]
         {
             get { return _values[index]; }
             set { _values[index] = value; }
@@ -35,10 +35,10 @@ namespace Isen.DotNet.Library.Lists
         /// Ajoute un élément à la fin de la liste
         /// </summary>
         /// <param name="item"></param>
-        public void Add(string item)
+        public void Add(T item)
         {
             // Nouveau tableau de taille + 1
-            var tmp = new string[Count + 1];
+            var tmp = new T[Count + 1];
             // Copier les éléments du tableau initial
             for (var i = 0 ; i < Count ; i++)
             {
@@ -57,7 +57,7 @@ namespace Isen.DotNet.Library.Lists
                 || index < 0)
                 throw new IndexOutOfRangeException();
 
-            var tmp = new string[Count - 1];
+            var tmp = new T[Count - 1];
             for (var i = 0 ; i < tmp.Length ; i++)
             {
                 tmp[i] = _values[i < index ? i : i + 1];
