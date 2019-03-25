@@ -44,5 +44,33 @@ namespace Isen.DotNet.Library.Tests
             list[0] = "Z";
             Assert.True(list[0] == "Z");
         }
+
+        [Fact]
+        public void RemoveAtTest()
+        {
+            var list = new MyCollection();
+            list.Add("A");
+            list.Add("B");
+            list.Add("C");
+            list.Add("D");
+
+            list.RemoveAt(0);
+            Assert.True(list.Count == 3);
+            Assert.True(list[0] == "B");
+            Assert.True(list[1] == "C");
+            Assert.True(list[2] == "D");
+
+            list.RemoveAt(1);
+            Assert.True(list.Count == 2);
+            Assert.True(list[0] == "B");
+            Assert.True(list[1] == "D");
+
+            list.RemoveAt(1);
+            Assert.True(list.Count == 1);
+            Assert.True(list[0] == "B");
+
+            list.RemoveAt(0);
+            Assert.True(list.Count == 0);
+        }
     }
 }
