@@ -1,4 +1,5 @@
 ﻿using System;
+using Isen.DotNet.Library;
 
 namespace Isen.DotNet.ConsoleApp
 {
@@ -6,7 +7,9 @@ namespace Isen.DotNet.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var hello = new Hello("Kall");
+            var message = hello.Greet();
+            Console.WriteLine(message);
         }
     }
 }
