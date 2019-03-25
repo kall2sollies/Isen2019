@@ -42,3 +42,10 @@ Ajouter le projet Library comme référence du projet ConsoleApp:
 ## Création d'une classe Hello
 Supprimer la classe autogénée (Class1.cs).  
 Créer un fichier Hello.cs, et coder la classe.  
+
+## Création d'une class MyCollection
+Cette classe aura pour but de manipuler 
+une liste de string dans un premier temps.  
+* Créer dans le projet Library un 
+  sous-dossier Lists,
+* une classe MyCollection
