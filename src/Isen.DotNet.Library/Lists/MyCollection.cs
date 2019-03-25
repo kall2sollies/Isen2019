@@ -125,12 +125,13 @@ namespace Isen.DotNet.Library.Lists
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            for (var i = 0 ; i < Count ; i++)
+            {
+                yield return this[i];
+            }
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+        IEnumerator IEnumerable.GetEnumerator() =>
+            GetEnumerator();
     }
 }

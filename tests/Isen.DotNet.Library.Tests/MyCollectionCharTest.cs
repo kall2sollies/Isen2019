@@ -1,6 +1,7 @@
 using System;
 using Xunit;
 using Isen.DotNet.Library.Lists;
+using System.Collections.Generic;
 
 namespace Isen.DotNet.Library.Tests
 {
@@ -174,6 +175,27 @@ namespace Isen.DotNet.Library.Tests
                 Assert.True(
                     e is ArgumentOutOfRangeException);
             }
+        }
+
+        [Fact]
+        public void EnumeratorTest()
+        {
+            var list = new MyCollection<char>();
+            list.Add('A');
+            list.Add('B');
+            list.Add('C');
+            list.Add('D');
+
+            Assert.True(
+                list is IEnumerable<char>);
+
+            var targetArray = 
+                new char[] { 'A', 'B', 'C', 'D' };
+            foreach(var item in list)
+            {
+                Assert.True(true);
+            }
+            Assert.Equal(targetArray, list);
         }
     }
 }

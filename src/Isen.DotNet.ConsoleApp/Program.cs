@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Isen.DotNet.Library;
 using Isen.DotNet.Library.Lists;
 
@@ -8,14 +9,14 @@ namespace Isen.DotNet.ConsoleApp
     {
         static void Main(string[] args)
         {
-            var list = new MyCollection();
+            var list = new MyCollection<string>();
             list.Add("A");
             list.Add("B");
             list.Add("C");
-            foreach(var v in list.Values)
-            {
-                Console.WriteLine(v);
-            }
+            var enumerator = 
+                list.GetEnumerator();
+            while (enumerator.MoveNext())
+                Console.WriteLine(enumerator.Current);            
         }
     }
 }
