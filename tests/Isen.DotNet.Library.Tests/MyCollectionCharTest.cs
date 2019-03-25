@@ -116,6 +116,25 @@ namespace Isen.DotNet.Library.Tests
             Assert.True(list.IndexOf('A') == 0);
             Assert.True(list.IndexOf('C') == 3);
             Assert.True(list.IndexOf('Z') < 0);
+
+            #pragma warning disable xUnit2017
+            Assert.True(list.Contains('A'));
+            Assert.False(list.Contains('Z'));
+            #pragma warning restore xUnit2017
         } 
+
+        [Fact]
+        public void RemoveTest()
+        {
+            var list = new MyCollection<char>();
+            list.Add('A');
+            list.Add('B');
+            list.Add('B');
+            list.Add('C');
+            Assert.True(list.Remove('B'));
+            Assert.True(list.Count == 3);
+            Assert.True(list[2] == 'C');
+            Assert.False(list.Remove('Z'));
+        }
     }
 }
