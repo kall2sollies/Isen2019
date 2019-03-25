@@ -2,8 +2,6 @@
 * Installer Visual Studio Code
 * Installer .Net Core SDK 2.2 :
   https://www.microsoft.com/net/download/core    
-  
-  
 # Préparation de la structure de la solution
 * `mkdir Isen.DotNet`  
 * `cd Isen.DotNet`  
@@ -29,7 +27,6 @@ Créer le fichier solution (.sln) :
 * Créer le fichier .sln : `dotnet new sln` 
 * Ajouter les différents éléments de la solution à ce projet (projet console):
 ** `dotnet sln add src/Isen.DotNet.ConsoleApp/`  
-
 Créer un dossier src/Isen.DotNet.Library et naviguer dedans.
 Avec la CLI .Net (dont l'interface en ligne de commande, que l'on utilise depuis le début), créer un projet de type 'librairie de classe':
 `dotnet new classlib`  
@@ -40,3 +37,8 @@ Depuis la racine : `dotnet sln add src/Isen.DotNet.Library`
 Ajouter le projet Library comme référence du projet ConsoleApp:
 * Naviguer dans le dossier du projet console  
 * `dotnet add reference ../Isen.DotNet.Library`  
+# Le C#
+
+## Création d'une classe Hello
+Supprimer la classe autogénée (Class1.cs).  
+Créer un fichier Hello.cs, et coder la classe.  
