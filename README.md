@@ -73,3 +73,12 @@ Modification de la classe de test: `new MyCollection()` devient `new MyCollectio
 Renommer MyCollectionTest.cs en MyCollectionStringTest.cs et renommer la classe de la même façon.
 
 Dupliquer MyCollectionStringTest en MyCollectionCharTest et adapter le code de test en conséquence.
+
+## Implémentation l'interface IList<T>
+
+Indiquer l'implémentation de l'héritage de l'interface IList<T>.
+Utiliser l'ampoule de Omnisharp pour :
+* générer automatiquement le using manquant
+* implémenter les prototypes des méthodes de l'interface
+
+Coder ensuite les méthodes, et leurs tests.
