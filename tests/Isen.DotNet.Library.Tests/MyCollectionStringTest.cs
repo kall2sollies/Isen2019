@@ -28,7 +28,7 @@ namespace Isen.DotNet.Library.Tests
             list.Add("B");
             list.Add("C");            
             var targetArray = new string[] {"A", "B", "C"};
-            Assert.Equal(targetArray, list.Values);
+            Assert.Equal(targetArray, list);
         }
 
         [Fact]
@@ -155,7 +155,7 @@ namespace Isen.DotNet.Library.Tests
             // A B b C D
             var targetArray = 
                 new string[] {"A", "B", "b", "C", "D"};
-            Assert.Equal(targetArray, list.Values);
+            Assert.Equal(targetArray, list);
 
             try
             {
@@ -197,6 +197,12 @@ namespace Isen.DotNet.Library.Tests
                 Assert.True(true);
             }
             Assert.Equal(targetArray, list);
+        }
+
+        [Fact]
+        public void CopyToTest()
+        {
+
         }
     }
 }

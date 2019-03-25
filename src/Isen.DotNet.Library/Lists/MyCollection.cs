@@ -21,7 +21,7 @@ namespace Isen.DotNet.Library.Lists
         /// <summary>
         /// Accès aux valeurs de la liste
         /// </summary>
-        public T[] Values => _values;
+        protected T[] Values => _values;
 
         /// <summary>
         /// Accesseur indexeur
@@ -109,7 +109,9 @@ namespace Isen.DotNet.Library.Lists
         public bool Contains(T item) => 
             IndexOf(item) >= 0;
 
-        public void CopyTo(T[] array, int arrayIndex)
+        public void CopyTo(
+            T[] array, 
+            int arrayIndex)
         {
             throw new NotImplementedException();
         }
