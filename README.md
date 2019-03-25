@@ -71,3 +71,5 @@ Réécriture de la classe `MyCollection` qui devient le générique `MyCollectio
 Modification de la classe de test: `new MyCollection()` devient `new MyCollection<string>()`  
 
 Renommer MyCollectionTest.cs en MyCollectionStringTest.cs et renommer la classe de la même façon.
+
+Dupliquer MyCollectionStringTest en MyCollectionCharTest et adapter le code de test en conséquence.
