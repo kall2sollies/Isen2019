@@ -202,6 +202,41 @@ namespace Isen.DotNet.Library.Tests
         [Fact]
         public void CopyToTest()
         {
+            // Notation litérale "Collection initializer"
+            // Autorisée car :
+            // - on implémente IEnumerable via IEnumerator
+            // - on a une méthode Add via IList
+            var list = new MyCollection<string>
+            { 
+                "A",
+                "B",
+                "C" 
+            };
+            var biggerArray = 
+                new string[] {"0", "1", "2", "a", "b", "c", "d"};
+            var biggerExpected = new string[] {"0", "1", "2", "A", "B", "C", "d"};
+            list.CopyTo(biggerArray, 3);
+            Assert.Equal(biggerArray, biggerExpected);
+            
+            var equalArray = new string[] {"0", "1", "2", "a", "b", "c"};
+            var equalExpected = new string[] {"0", "1", "2", "A", "B", "C"};
+            list.CopyTo(equalArray, 3);
+            Assert.Equal(equalArray, equalExpected);
+
+            var smallerArray = new string[] {"0", "1", "2", "a", "b"};
+            try
+            {
+                list.CopyTo(smallerArray, 3);
+                // Si on atteint cette ligne,
+                // c'est que la ligne du dessus 
+                // n'a pas planté alors qu'elle
+                // devait
+                Assert.True(false);
+            }
+            catch(Exception e)
+            {
+                Assert.True(e is ArgumentException);
+            }
 
         }
     }

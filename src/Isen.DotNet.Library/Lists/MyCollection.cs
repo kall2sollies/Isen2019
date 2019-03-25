@@ -113,7 +113,14 @@ namespace Isen.DotNet.Library.Lists
             T[] array, 
             int arrayIndex)
         {
-            throw new NotImplementedException();
+            if (array == null) throw new ArgumentNullException();
+            if (arrayIndex < 0) throw new ArgumentOutOfRangeException();
+            if (Count + arrayIndex > array.Length) throw new ArgumentException();
+            
+            for(var i = 0; i < Count ; i++)
+            {
+                array[arrayIndex + i] = this[i];
+            }
         }
 
         public bool Remove(T item)
