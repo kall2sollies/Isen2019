@@ -71,6 +71,37 @@ namespace Isen.DotNet.Library.Tests
 
             list.RemoveAt(0);
             Assert.True(list.Count == 0);
+
+            try
+            {
+                list.RemoveAt(0);
+            }
+            catch(Exception e)
+            {
+                Assert.True(
+                    e is IndexOutOfRangeException);
+            }
+
+            try
+            {
+                list.RemoveAt(1);
+            }
+            catch(Exception e)
+            {
+                Assert.True(
+                    e is IndexOutOfRangeException);
+            }
+
+            try
+            {
+                list.RemoveAt(-1);
+            }
+            catch(Exception e)
+            {
+                Assert.True(
+                    e is IndexOutOfRangeException);
+            }
+            
         }
     }
 }

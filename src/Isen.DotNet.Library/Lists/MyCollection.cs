@@ -60,8 +60,7 @@ namespace Isen.DotNet.Library.Lists
             var tmp = new string[Count - 1];
             for (var i = 0 ; i < tmp.Length ; i++)
             {
-                if (i < index) tmp[i] = _values[i];
-                else if (i >= index) tmp[i] = _values[i + 1];
+                tmp[i] = _values[i < index ? i : i + 1];
             }
             _values = tmp;
         }
