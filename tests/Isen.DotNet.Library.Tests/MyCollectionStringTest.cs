@@ -137,5 +137,44 @@ namespace Isen.DotNet.Library.Tests
             Assert.True(list[2] == "C");
             Assert.False(list.Remove("Z"));
         }   
+
+         [Fact]
+        public void InsertTest()
+        {
+            var list = new MyCollection<string>();
+            list.Insert(0, "C");
+            // C
+            list.Insert(0, "B");
+            // B C
+            list.Insert(0, "A");
+            // A B C
+            list.Insert(3, "D");
+            // A B C D
+            list.Insert(2, "b");
+            // A B b C D
+            var targetArray = 
+                new string[] {"A", "B", "b", "C", "D"};
+            Assert.Equal(targetArray, list.Values);
+
+            try
+            {
+                list.Insert(-1, "Z");
+            }
+            catch(Exception e)
+            {
+                Assert.True(
+                    e is ArgumentOutOfRangeException);
+            }
+
+            try
+            {
+                list.Insert(6, "Z");
+            }
+            catch(Exception e)
+            {
+                Assert.True(
+                    e is ArgumentOutOfRangeException);
+            }
+        }
     }
 }

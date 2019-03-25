@@ -85,12 +85,25 @@ namespace Isen.DotNet.Library.Lists
 
         public void Insert(int index, T item)
         {
-            throw new NotImplementedException();
+            if (index > Count || index < 0)
+                throw new ArgumentOutOfRangeException();
+
+            // Nouveau tableau de taille + 1
+            var tmp = new T[Count + 1];
+            // Copier les éléments du tableau initial
+            for (var i = 0 ; i < tmp.Length ; i++)
+            {
+                if (i < index) tmp[i] = _values[i];
+                else if (i == index) tmp[i] = item;
+                else tmp[i] = _values[i - 1];                
+            }
+            // Echanger les tableaux
+            _values = tmp;
         }
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            _values = new T[0];
         }
 
         public bool Contains(T item) => 
