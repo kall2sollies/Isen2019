@@ -22,6 +22,16 @@ namespace Isen.DotNet.Library.Lists
         public string[] Values => _values;
 
         /// <summary>
+        /// Accesseur indexeur
+        /// </summary>
+        /// <value></value>
+        public string this[int index]
+        {
+            get { return _values[index]; }
+            set { _values[index] = value; }
+        }
+
+        /// <summary>
         /// Ajoute un élément à la fin de la liste
         /// </summary>
         /// <param name="item"></param>

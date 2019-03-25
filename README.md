@@ -49,3 +49,17 @@ une liste de string dans un premier temps.
 * Créer dans le projet Library un 
   sous-dossier Lists,
 * une classe MyCollection
+* Coder la methode `Add(string item)`  
+
+## Ajouter un projet de tests unitaires
+* A la racine de la solution, créer un dossier `tests` et un sous-dossier `Isen.DotNet.Library.Tests` 
+* Naviguer vers ce dossier
+* `dotnet new xunit`  
+* Ajouter ce projet au sln. Depuis la racine: `dotnet sln add tests/Isen.DotNet.Library.Tests`  
+* Revenir dans le dossier du projet de test
+* Référencer le projet Library dans le projet de test: `dotnet add reference ../../src/Isen.DotNet.Library`  
+* Renommer la classe générée automatiquement dans le projet de test et l'appeler `MyCollectionTest`  
+* Coder un test de la méthode Add
+* Exécuter `dotnet test`  
+* Coder les accesseurs indexeurs
+* Coder méthodes de tests Count et Index
