@@ -37,6 +37,7 @@ Depuis la racine : `dotnet sln add src/Isen.DotNet.Library`
 Ajouter le projet Library comme référence du projet ConsoleApp:
 * Naviguer dans le dossier du projet console  
 * `dotnet add reference ../Isen.DotNet.Library`  
+
 # Le C#
 
 ## Création d'une classe Hello
@@ -82,3 +83,46 @@ Utiliser l'ampoule de Omnisharp pour :
 * implémenter les prototypes des méthodes de l'interface
 
 Coder ensuite les méthodes, et leurs tests.
+
+## Manipulation de modèles
+
+### Apartée sur les types nullables
+```csharp
+
+// Person est un type référence
+Person person; // null
+person = new Person(); // pas null
+person = null; // re-null
+
+// int est un Value Type
+// les types primitifs (bool, int, long, float...)
+// sont des types valeur
+bool b; //pas null, il vaut sa valeur par défaut (false)
+b = true; // true
+// b = null; // interdit
+
+// bool? est un bool nullable (type référence)
+// bool? != bool
+// bool? == Nullable<bool>
+bool? nb = null; // null
+Nullable<bool> nbb; // null aussi
+var hasValue = nb.HasValue; // false
+nb = true;
+var val = nb.Value; // true
+
+```
+
+Dans le projet Library, créer un dossier Persons (au pluriel).  
+Créer une classe Person (au singulier).  
+
+### Retour au modèle
+Une personne a 3 champs :
+* Prénom
+* Nom
+* Date de naissance optionnelle
+
+On crée 2 constructeurs (2 et 3 params).  
+La version 3 param appelle celui à 2 params puis complète.  
+
+Ajouter un accesseur lecteur seule (getter) pour obtenir l'âge.
+
