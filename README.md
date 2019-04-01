@@ -112,7 +112,7 @@ var val = nb.Value; // true
 
 ```
 
-Dans le projet Library, créer un dossier Persons (au pluriel).  
+Dans le projet Library, créer un dossier Models (au pluriel).  
 Créer une classe Person (au singulier).  
 
 ### Retour au modèle
@@ -125,4 +125,29 @@ On crée 2 constructeurs (2 et 3 params).
 La version 3 param appelle celui à 2 params puis complète.  
 
 Ajouter un accesseur lecteur seule (getter) pour obtenir l'âge.
+
+### Migration vers une entité
+
+Ajouter un champ Id (int) et un champ Name.
+Pour le champ Name, on va déclarer explicitement le champ de backup privé _name
+
+### Modele City
+
+Créer dans Models une classe City, avec Id et Name + ZipCode.
+
+Dans Person, ajouter un champ BornIn de type City.  
+
+### Refactoring
+Déplacer Id et Name vers une classe de base, abstraite : `BaseModel`. 
+
+Faire dériver City et Person de BaseModel.
+Noter les champs Id et Name comme des override (puisque les champs sont virtuels dans BaseModel). 
+
+### Display
+
+Implémenter un mode d'affichage de base (string), overridable, et l'utiliser dans `ToString()`.  
+
+Compléter ce mécanisme afin d'ajouter le ZipCode à l'affichage des City.  
+
+Puis reprendre l'affichage d'une Person.  
 
