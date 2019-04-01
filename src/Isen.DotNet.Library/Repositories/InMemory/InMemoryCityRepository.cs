@@ -52,6 +52,15 @@ namespace Isen.DotNet.Library.Repositories.InMemory
             }
         }
 
+        public void Delete(int id)
+        {
+            var entityToDelete = Single(id);
+            if (entityToDelete == null) return;
+            ContextTemp.Remove(entityToDelete);
+        }
+        public void Delete(City entity) => 
+            Delete(entity.Id);        
+
         private List<City> _contextTemp; 
         private List<City> ContextTemp => 
             _contextTemp ??

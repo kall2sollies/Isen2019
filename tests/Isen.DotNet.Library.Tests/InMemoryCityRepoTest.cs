@@ -86,5 +86,24 @@ namespace Isen.DotNet.Library.Tests
             Assert.True(gapCreated.ZipCode == "05000");
             Assert.True(!gapCreated.IsNew);
         }
+
+        [Fact]
+        public void Delete()
+        {
+            var cityRepo = new InMemoryCityRepository();
+            var initialCount = cityRepo.Context
+                .ToList()
+                .Count();
+
+            var toulon = cityRepo.Single("Toulon");
+            cityRepo.Delete(toulon);
+            cityRepo.SaveChanges();
+            var finalCount = cityRepo.Context
+                .ToList()
+                .Count();
+
+            Assert.True(finalCount == initialCount - 1);
+            Assert.True(cityRepo.Single("Toulon") == null);
+        }
     }
 }
