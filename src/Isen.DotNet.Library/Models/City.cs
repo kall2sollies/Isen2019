@@ -10,5 +10,11 @@ namespace Isen.DotNet.Library.Models
 
         public override string Display => 
             $"{base.Display}|ZipCode={ZipCode}";
+
+        public override void Map<City>(City copy)
+        {
+            base.Map<City>(copy);
+            ZipCode = copy.ZipCode;
+        }
     }
 }

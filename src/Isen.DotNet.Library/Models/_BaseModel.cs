@@ -14,5 +14,11 @@ namespace Isen.DotNet.Library.Models
 
         public override string ToString() 
             => Display;
+
+        public virtual void Map<T>(T copy)
+            where T : BaseModel
+        {
+            Name = copy.Name;
+        }
     }
 }

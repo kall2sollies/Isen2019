@@ -195,3 +195,7 @@ A ce stade, nous avons couvert toutes les opérations de CRUD:
 * R = Read  
 * U = Update  
 * D = Delete  
+
+## Refactoring : généralisation du repo
+
+Dans le dossier Base, créer `BaseInMemoryRepository` 
