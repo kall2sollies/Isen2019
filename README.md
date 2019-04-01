@@ -252,3 +252,53 @@ Ajouter le projet Library en référence au projet Web :
 
 Revenir à la racine, et ajouter ce projet à la solution.  
 `dotnet sln add src/Isen.DotNet.Web/`  
+
+## Anatomie d'un projet MVC
+
+Le schéma (routing) par défaut des url d'un projet MVC est:
+
+`https://localhost:5001/[Vue]/[Action][?param=value&param2=value2]`  
+
+OU  
+
+`https://localhost:5001/[Vue]/[Action]/[param/value...]`  
+
+Ce schéma peut être complété / modifié / réécrit selon les besoins.  
+
+* `/wwwroot` : contient essentiellement les assets de l'application, soit les images, les css (scss/sass) et les js (ou typescript), ainsi que les copies locales des librairies utilisées (BootStrap 4, jQuery...). Globalement, tout ce qui doit être chargé côté client, donc côté navigateur.  
+
+* `/Views` : Fichiers `.cshtml`. Ce sont des templates HTML écrits avec la syntaxe de templating *Razor*. Razor utilise +/- la syntaxe du C#.  
+
+  * Chaque dossier (à part Shared) correspond à un contrôleur. Ex : le dossier Home contient les vues accessibles via `https://localhost:5001/Home` et chaque vue a un controller correspondant (que l'on verra plus tard) et on peut avoir plusieurs vues par contrôleur. Ex : `Privacy` et `Index` sont 2 vues / action du contrôleur `Home`.
+
+  * Chaque fichier cshtml correspond à une action. Ex : dans `Home`, le fichier `Privacy.cshtml` corrspond à l'url `https://localhost:5001/Home/Privacy`  
+
+   L'action `Index` est l'action par défaut. Donc si l'url ne précise pas d'action dans ses segments, c'est l'action Index qui est appelée.  
+
+  * `/Shared/_Layout.cshtml` contient le template global, dans lequel les vues vont s'insérer. 
+
+  Les chemins en `~/` correspondent à `/wwwroot`.  
+
+  Les librairies (JS/CSS) sont chargées localement en environnement de dev, et depuis un serveur CDN, en environnement de prod.
+
+  Les CSS sont chargées dans le `<head>` de la page, les JS quant à eux, tout à la fin du `<body>`.  
+
+* `/Controllers` : Classes C# dont le but est
+  * Sens server > client : de prendre des data dans un modèle, et les injecter dans la vue/action correspondante.
+  * Sens client > server : répondre aux requêtes (GET, POST, etc...)
+  * Le nommage des classes de controller est normalisé : `NomDeLaVueController` (Ex : `HomeController`)  
+  * Le nommage des méthodes est également normalisé, et correspond aux actions. (Ex : `HomeController.Privacy()` ou `HomeController.Index()`) 
+
+* `/Models` : ce dossier contient des ViewModels. Donc des classes C# uniquement consituées de champs (pas de logique, pas de méthodes). On appelle ce genre de classes des POCO (Plain Old C# Object), ou encore des Value Objects.
+
+    Par opposition aux classes de Model métier (Person, City), les ViewModel ont pour but d'avoir uniquement les champs strictement nécessaires à l'affichage. 
+
+    Ex : si on affiche une liste des `Person`, avec uniquement nom et prénom, on créera un `PersonViewModel` avec `First` et `Last`, mais on ne mettra pas `BornIn` ni `DateOfBirth`. Le but étant d'avoir un objet aussi léger que possible, pour minimiser les transferts.  
+
+* `/Startup.cs` : Configuration des injections de dépendances, des services utilisés par l'application (repositories, librariries, loggers, ...)
+
+* `/Program.cs` : Point d'entrée de l'application. Depuis .Net Core et ASP.NET MVC Core, une application web est en fait une application console.
+
+  Ce point d'entrée lance la configuration des services, puis lance le serveur web embarqué (Kestrel).  
+
+* `/appsettings.json` : ce sont les settings de l'application. La chaîne de connexion à une base de données se retrouvera là-dedans.  
