@@ -19,6 +19,14 @@ namespace Isen.DotNet.ConsoleApp
 
             foreach(var p in personRepo.Context)
                 Console.WriteLine(p);
+
+            var toulon = cityRepo.Single("Toulon");
+            toulon.Name = "New York";
+            cityRepo.Update(toulon);
+            cityRepo.SaveChanges();
+
+            foreach(var p in personRepo.Context)
+                Console.WriteLine(p);
         }
     }
 }

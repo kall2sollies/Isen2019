@@ -11,9 +11,12 @@ namespace Isen.DotNet.Library.Tests
 {
     public class PersonRepoFactory
     {
-        public static IPersonRepository Create() =>
-            new InMemoryPersonRepository();
+        public static IPersonRepository Create(
+            ICityRepository cityRepository = null) =>
+                new InMemoryPersonRepository(cityRepository ?? 
+                    new InMemoryCityRepository());           
     }
+
     public class InMemoryPersonRepoTest
     {
         [Fact]
@@ -145,6 +148,31 @@ namespace Isen.DotNet.Library.Tests
                     countCitiesFromQuery++;
             }
             Assert.True(result.Count == countCitiesFromQuery);
+        }
+
+        [Fact]
+        public void DiTest()
+        {
+            ICityRepository cityRepo = new InMemoryCityRepository();
+            var personRepo = PersonRepoFactory.Create(cityRepo);
+
+            Assert.True(
+                personRepo
+                    .Single("DAVIS Miles")?.BornIn?.Name == "Toulon");
+            var cityId = personRepo
+                    .Single("DAVIS Miles")?.BornIn?.Id;
+            var toulon = cityRepo.Single("Toulon");
+            toulon.Name = "New York";
+            cityRepo.Update(toulon);
+            cityRepo.SaveChanges();
+
+            Assert.True(
+                personRepo
+                    .Single("DAVIS Miles")?.BornIn?.Name == "New York");
+            var updatedCityId = personRepo
+                    .Single("DAVIS Miles")?.BornIn?.Id;
+
+            Assert.True(cityId == updatedCityId);
         }
     }
 }
