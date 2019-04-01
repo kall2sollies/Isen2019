@@ -17,6 +17,9 @@ namespace Isen.DotNet.Library.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime? DateOfBirth { get; set; }
+        
+        // Relation réciproque de 
+        // City.PersonCollection (List<Person>)
         public City BornIn { get;set; }
 
         public int? Age

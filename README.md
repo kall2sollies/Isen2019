@@ -227,3 +227,14 @@ Ce design pattern s'appelle :
 * également IoC : Inversion of Control
 * ou encore DI : Dependency Injection  
 
+### Relations réciproques
+
+Nous avons la classe de modèle `Person` qui a un champ de type `City` dans sa propriété `BornIn`.  
+
+En termes de verbatim OOP, c'est une relation par composition (une classe a un champ dont le type est une autre classe), par opposition à une relation par héritage.
+
+En termes de verbatim de Base de données relationnelle, c'est une relation `one-to-many`, puisque une personne a une ville, mais une ville a potentiellement plusieurs personnes.  
+
+On peut donc, au niveau de `City`, ajouter une propriété de liste de personnes, qui serait donc la relation réciproque de `Person.BornIn`.   
+
+Attention cependant, même si on ajoute cette relation, elle ne va pas se remplir toute seule.  
