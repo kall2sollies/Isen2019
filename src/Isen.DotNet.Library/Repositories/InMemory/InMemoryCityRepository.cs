@@ -59,7 +59,14 @@ namespace Isen.DotNet.Library.Repositories.InMemory
             ContextTemp.Remove(entityToDelete);
         }
         public void Delete(City entity) => 
-            Delete(entity.Id);        
+            Delete(entity.Id);    
+
+        public IEnumerable<City> GetAll() => 
+            Context;    
+
+        public IEnumerable<City> Find(
+            Func<City, bool> predicate) => 
+            Context.Where(predicate);
 
         private List<City> _contextTemp; 
         private List<City> ContextTemp => 

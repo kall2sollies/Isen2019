@@ -165,9 +165,10 @@ Créer cette arbo :
 Sous InMemory, créer la classe `InMemoryCityRepository`.   
 
 Implémenter une liste test (ModelCollection).  
+
 ### Single
 
-Ajouter 2 méthodes Single : recherche par Id, et recherche par Name.  
+Ajouter 2 méthodes `Single()` : recherche par Id, et recherche par Name.  
 
 Ecrire des tests unitaires pour tester ces 2 méthodes single.
 
@@ -177,8 +178,20 @@ Créer une méthode qui permette de renvoyer le premier Id dispo (max + 1).
 
 Créer une méthode Update qui gère automatiquement les créations de nouvelles entités, ou les mises à jour d'entités existantes.
 
-Créer une méthode SaveChanges() qui permette un mécanisme de transaction (décider de sauver tous les changements ou non) via une copie du contexte.  
+Créer une méthode `SaveChanges()` qui permette un mécanisme de transaction (décider de sauver tous les changements ou non) via une copie du contexte.  
 
 ### Delete
 
-Créer une méthode de Delete d'une entité, qui utilise le mécanisme de transaction.  
+Créer une méthode de `Delete()` d'une entité, qui utilise le mécanisme de transaction.  
+
+### Listes
+
+Créer une méthode `GetAll()` qui renvoie toutes les entités du contexte.
+
+Créer une méthode `Find()` qui prend comme paramètre un prédicat de recherche, sous forme de lambda expression (méthode anonyme).
+
+A ce stade, nous avons couvert toutes les opérations de CRUD:
+* C = Create  
+* R = Read  
+* U = Update  
+* D = Delete  
