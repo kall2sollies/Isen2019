@@ -326,4 +326,10 @@ Dans le dossier des contrôleurs, créer `CityController.cs` et ajouter les mét
 
 ## Ajouter les vues correspondantes
 
+### Vues vides
+
 Dupliquer le dossier Home et le nommer `City`, vider et adapter les vues : enlever tout le html existant, et mettre juste un titre dans chaque vue.  
+
+### Maquette du tableau
+Utiliser les éléments de tableaux en layout Bootstrap issus de cette doc : https://getbootstrap.com/docs/4.1/content/tables/ Ex : Striped rows
+
