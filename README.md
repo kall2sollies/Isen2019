@@ -238,3 +238,17 @@ En termes de verbatim de Base de données relationnelle, c'est une relation `one
 On peut donc, au niveau de `City`, ajouter une propriété de liste de personnes, qui serait donc la relation réciproque de `Person.BornIn`.   
 
 Attention cependant, même si on ajoute cette relation, elle ne va pas se remplir toute seule.  
+
+
+# Ajout d'un projet ASP.NET MVC (Core)
+
+## Ajout du projet depuis le template de la CLI .Net Core
+
+Depuis le dossier src, ajouter un dossier `Isen.DotNet.Web`. Naviguer dans ce dossier puis `dotnet new mvc`.  
+Directement : `dotnet run`  et ouvrir https://localhost:5001.  
+
+Ajouter le projet Library en référence au projet Web :  
+`dotnet add reference ../Isen.DotNet.Library/`  
+
+Revenir à la racine, et ajouter ce projet à la solution.  
+`dotnet sln add src/Isen.DotNet.Web/`  
