@@ -174,3 +174,11 @@ Ecrire des tests unitaires pour tester ces 2 méthodes single.
 ### Update
 
 Créer une méthode qui permette de renvoyer le premier Id dispo (max + 1).
+
+Créer une méthode Update qui gère automatiquement les créations de nouvelles entités, ou les mises à jour d'entités existantes.
+
+Créer une méthode SaveChanges() qui permette un mécanisme de transaction (décider de sauver tous les changements ou non) via une copie du contexte.  
+
+### Delete
+
+Créer une méthode de Delete d'une entité, qui utilise le mécanisme de transaction.  
