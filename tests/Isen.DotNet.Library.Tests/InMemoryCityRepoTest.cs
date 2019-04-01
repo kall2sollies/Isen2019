@@ -38,7 +38,7 @@ namespace Isen.DotNet.Library.Tests
         public void UpdateUpdate()
         {
             var cityRepo = new InMemoryCityRepository();
-            var initialCount = cityRepo.ModelCollection
+            var initialCount = cityRepo.Context
                 .ToList()
                 .Count();
                 
@@ -49,7 +49,7 @@ namespace Isen.DotNet.Library.Tests
             cityRepo.Update(toulon);
             cityRepo.SaveChanges();
 
-            var FinalCount = cityRepo.ModelCollection
+            var FinalCount = cityRepo.Context
                 .ToList()
                 .Count();
 
@@ -64,7 +64,7 @@ namespace Isen.DotNet.Library.Tests
         public void UpdateCreate()
         {
             var cityRepo = new InMemoryCityRepository();
-            var initialCount = cityRepo.ModelCollection
+            var initialCount = cityRepo.Context
                 .ToList()
                 .Count();
 
@@ -76,7 +76,7 @@ namespace Isen.DotNet.Library.Tests
             cityRepo.Update(gap);
             cityRepo.SaveChanges();
 
-            var FinalCount = cityRepo.ModelCollection
+            var FinalCount = cityRepo.Context
                 .ToList()
                 .Count();
             Assert.True(initialCount == FinalCount - 1);
