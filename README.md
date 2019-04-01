@@ -204,3 +204,11 @@ Déplacer toutes les méthodes de CityRepositoty vers BaseInMemoryRepository et 
 
 ### Extraction d'interface
 Dans le dossier Interfaces, créer `IBaseRepository`  et y rappatrier toutes les signatures des opérations de CRUD.  
+
+Créer une interface `ICityRepository`, qui implémente `IBaseRepository`, sans ajouter de méthode.  
+`InMemoryCityRepository` devra implémenter cette interface.  
+
+### TD : Refaire la même chose pour PersonRepository
+* Créer l'interface IPersonRepository
+* Créer InMemoryPersonRepository
+* Créer InMemoryPersonRepoTest en dupliquant l'autre

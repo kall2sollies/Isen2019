@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Isen.DotNet.Library.Models;
 using Isen.DotNet.Library.Repositories.Base;
+using Isen.DotNet.Library.Repositories.Interfaces;
 
 namespace Isen.DotNet.Library.Repositories.InMemory
 {
     public class InMemoryCityRepository :
-        BaseInMemoryRepository<City>
+        BaseInMemoryRepository<City>,
+        ICityRepository
     {      
         public override List<City> SampleData =>
             new List<City>()
