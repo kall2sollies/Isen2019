@@ -25,9 +25,38 @@ namespace Isen.DotNet.Library.Repositories.InMemory
             }
         }
 
+        public int NewId() => 
+            ModelCollection.Max(c => c.Id) + 1;
+
         public City Single(int id) => 
             ModelCollection.SingleOrDefault(c => c.Id == id);
         public City Single(string name) => 
             ModelCollection.FirstOrDefault(c => c.Name.Equals(name));
+
+        public void Update(City entity)
+        {
+            if (entity == null) return;
+
+            var entities = ModelCollection.ToList();
+
+            if (entity.IsNew)
+            {
+                entity.Id = NewId();
+                entities.Add(entity);
+            }
+            else
+            {
+                var existing = Single(entity.Id);
+                existing.Name = entity.Name;
+                existing.ZipCode = entity.ZipCode;
+            }
+
+            _modelCollection = entities;
+        }
+
+        public void SaveChanges()
+        {
+
+        }
     }
 }

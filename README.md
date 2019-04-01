@@ -165,7 +165,12 @@ Créer cette arbo :
 Sous InMemory, créer la classe `InMemoryCityRepository`.   
 
 Implémenter une liste test (ModelCollection).  
+### Single
 
 Ajouter 2 méthodes Single : recherche par Id, et recherche par Name.  
 
 Ecrire des tests unitaires pour tester ces 2 méthodes single.
+
+### Update
+
+Créer une méthode qui permette de renvoyer le premier Id dispo (max + 1).

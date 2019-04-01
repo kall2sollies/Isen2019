@@ -3,6 +3,8 @@ using Xunit;
 using Isen.DotNet.Library.Lists;
 using System.Collections.Generic;
 using Isen.DotNet.Library.Repositories.InMemory;
+using System.Linq;
+using Isen.DotNet.Library.Models;
 
 namespace Isen.DotNet.Library.Tests
 {
@@ -30,6 +32,59 @@ namespace Isen.DotNet.Library.Tests
 
             var fake = cityRepo.Single("Fake");
             Assert.True(fake == null);
+        }
+
+        [Fact]
+        public void UpdateUpdate()
+        {
+            var cityRepo = new InMemoryCityRepository();
+            var initialCount = cityRepo.ModelCollection
+                .ToList()
+                .Count();
+                
+            var toulon = cityRepo.Single("Toulon");
+            toulon.Name = "Toulon sur Mer";
+            toulon.ZipCode = "83200";
+
+            cityRepo.Update(toulon);
+            cityRepo.SaveChanges();
+
+            var FinalCount = cityRepo.ModelCollection
+                .ToList()
+                .Count();
+
+            var toulonUpdated = 
+                cityRepo.Single(toulon.Id);
+            Assert.True(toulonUpdated.Name == "Toulon sur Mer");
+            Assert.True(toulonUpdated.ZipCode == "83200");
+            Assert.True(initialCount == FinalCount);
+        }
+
+        [Fact]
+        public void UpdateCreate()
+        {
+            var cityRepo = new InMemoryCityRepository();
+            var initialCount = cityRepo.ModelCollection
+                .ToList()
+                .Count();
+
+            var gap = new City() 
+            {
+                Name = "Gap",
+                ZipCode = "05000"
+            };
+            cityRepo.Update(gap);
+            cityRepo.SaveChanges();
+
+            var FinalCount = cityRepo.ModelCollection
+                .ToList()
+                .Count();
+            Assert.True(initialCount == FinalCount - 1);
+
+            var gapCreated = cityRepo.Single("Gap");
+            Assert.True(gapCreated != null);
+            Assert.True(gapCreated.ZipCode == "05000");
+            Assert.True(!gapCreated.IsNew);
         }
     }
 }
