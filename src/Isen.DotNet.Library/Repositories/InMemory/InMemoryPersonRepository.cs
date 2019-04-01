@@ -10,7 +10,18 @@ namespace Isen.DotNet.Library.Repositories.InMemory
     public class InMemoryPersonRepository :
         BaseInMemoryRepository<Person>,
         IPersonRepository
-    {      
+    {   
+        private readonly ICityRepository _cityRepository;
+        
+        // Pattern d'Injection de Dépendance
+        // aka IoC : Inversion of Control
+        // aka DI : Dependency Injection
+        public InMemoryPersonRepository(
+            ICityRepository cityRepository)
+        {
+            _cityRepository = cityRepository;
+        }
+
         public override List<Person> SampleData =>
             new List<Person>()
             {
@@ -20,7 +31,8 @@ namespace Isen.DotNet.Library.Repositories.InMemory
                     FirstName = "Miles", 
                     LastName = "DAVIS", 
                     Name = "DAVIS Miles",
-                    DateOfBirth = new DateTime(1926,5, 26)
+                    DateOfBirth = new DateTime(1926,5, 26),
+                    BornIn = _cityRepository.Single("Toulon")
                 },
                 new Person()
                 { 
@@ -28,15 +40,17 @@ namespace Isen.DotNet.Library.Repositories.InMemory
                     FirstName = "Bill", 
                     LastName = "EVANS", 
                     Name = "EVANS Bill",
-                    DateOfBirth = new DateTime(1929,8, 16)
+                    DateOfBirth = new DateTime(1929,8, 16),
+                    BornIn = _cityRepository.Single("Nice")
                 },
                 new Person()
                 { 
                     Id = 3, 
                     FirstName = "John", 
                     LastName = "COLTRANE", 
-                    Name = "COLTRANCE John",
-                    DateOfBirth = new DateTime(1926, 9, 26)
+                    Name = "COLTRANE John",
+                    DateOfBirth = new DateTime(1926, 9, 26),
+                    BornIn = _cityRepository.Single("Lyon")
                 }
             };
     }

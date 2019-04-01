@@ -212,3 +212,18 @@ Créer une interface `ICityRepository`, qui implémente `IBaseRepository`, sans 
 * Créer l'interface IPersonRepository
 * Créer InMemoryPersonRepository
 * Créer InMemoryPersonRepoTest en dupliquant l'autre
+
+### Composition / injection de repositories
+
+Dans `PersonRepository`, ajouter un constructeur, qui prend comme paramètre une 
+interface de `ICityRepository`.  
+
+La classe `PersonRepository` nécessite d'avoir une instance de `ICityRepository` pour fonctionner. On dit qu'elle a une dépendance sur cette classe.
+
+Cette dépendance est déclarée dans son constructeur.
+
+Ce design pattern s'appelle :
+* Pattern d'Injection de Dépendance
+* également IoC : Inversion of Control
+* ou encore DI : Dependency Injection  
+
