@@ -151,3 +151,21 @@ Compléter ce mécanisme afin d'ajouter le ZipCode à l'affichage des City.
 
 Puis reprendre l'affichage d'une Person.  
 
+# Création de Repositories
+
+Créer cette arbo :
+[Libray]
+    /Repositories
+    /Repositories/Base (repo abstrait)
+    /Repositories/Interfaces (base et interfaces spécifiques)
+    /Repositories/InMemory (implémentations InMemory)
+
+## Exemple concret sur CityRepository
+
+Sous InMemory, créer la classe `InMemoryCityRepository`.   
+
+Implémenter une liste test (ModelCollection).  
+
+Ajouter 2 méthodes Single : recherche par Id, et recherche par Name.  
+
+Ecrire des tests unitaires pour tester ces 2 méthodes single.
