@@ -302,3 +302,28 @@ Ce schéma peut être complété / modifié / réécrit selon les besoins.
   Ce point d'entrée lance la configuration des services, puis lance le serveur web embarqué (Kestrel).  
 
 * `/appsettings.json` : ce sont les settings de l'application. La chaîne de connexion à une base de données se retrouvera là-dedans.  
+
+# Ajout de vues
+
+## Ajout des éléments de menu
+
+Le menu de navigation utilise les éléments et classes issus du framework Bootstrap 4. Utiliser les éléments de ce framework pour ajouter une navigation en menus déroulants.
+Doc : https://getbootstrap.com/docs/4.1/getting-started/introduction/
+Menu + dropdown : https://getbootstrap.com/docs/4.1/components/navs/#tabs-with-dropdowns
+
+Ajouter la navigation suivante dans le fichier _Layout.cshtml :
+* Villes (pas une page, juste un noeud de menu)
+  * Toutes (afficher la liste des villes)  
+    `https://localhost:5001/City/[Index]`
+  * Ajouter... (afficher un formulaire de saisie vide)  
+    `https://localhost:5001/City/Edit/`
+
+Lorsqu'on cliquera sur une ville dans la liste, on pourra l'éditer avec une url du type `https://localhost:5001/City/Edit/2` qui appellera en fait la vue "Ajouter", qui servira aussi bien à la création qu'à la modification.  
+
+## Ajouter le contrôleur CityController
+
+Dans le dossier des contrôleurs, créer `CityController.cs` et ajouter les méthodes correspondant aux 2 actions prévues (Index, Edit).  
+
+## Ajouter les vues correspondantes
+
+Dupliquer le dossier Home et le nommer `City`, vider et adapter les vues : enlever tout le html existant, et mettre juste un titre dans chaque vue.  
