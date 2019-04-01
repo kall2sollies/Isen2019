@@ -2,7 +2,8 @@ using System;
 
 namespace Isen.DotNet.Library.Models
 {
-    public abstract class BaseModel
+    public abstract class BaseModel<T>
+        where T : BaseModel<T>
     {
         public virtual int Id { get;set; }
         public virtual string Name { get;set; }
@@ -15,8 +16,7 @@ namespace Isen.DotNet.Library.Models
         public override string ToString() 
             => Display;
 
-        public virtual void Map<T>(T copy)
-            where T : BaseModel
+        public virtual void Map(T copy)
         {
             Name = copy.Name;
         }

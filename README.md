@@ -196,6 +196,11 @@ A ce stade, nous avons couvert toutes les opérations de CRUD:
 * U = Update  
 * D = Delete  
 
-## Refactoring : généralisation du repo
+## Refactoring 
 
-Dans le dossier Base, créer `BaseInMemoryRepository` 
+### Généralisation du repo
+Dans le dossier Base, créer `BaseInMemoryRepository`.   
+Déplacer toutes les méthodes de CityRepositoty vers BaseInMemoryRepository et les adapter en généric.  
+
+### Extraction d'interface
+Dans le dossier Interfaces, créer `IBaseRepository`  et y rappatrier toutes les signatures des opérations de CRUD.  

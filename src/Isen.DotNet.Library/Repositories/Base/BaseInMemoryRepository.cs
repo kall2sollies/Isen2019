@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Isen.DotNet.Library.Models;
+using Isen.DotNet.Library.Repositories.Interfaces;
 
 namespace Isen.DotNet.Library.Repositories.Base
 {
-    public abstract class BaseInMemoryRepository<T>
-        where T : BaseModel
+    public abstract class BaseInMemoryRepository<T> :
+        IBaseRepository<T>
+        where T : BaseModel<T>
     {
         protected List<T> _context; 
         public virtual IQueryable<T> Context
@@ -39,6 +41,24 @@ namespace Isen.DotNet.Library.Repositories.Base
             Context.SingleOrDefault(c => c.Id == id);
         public T Single(string name) => 
             Context.FirstOrDefault(c => c.Name.Equals(name));
+        
+        public void Update(T entity)
+        {
+            if (entity == null) return;
+            
+            var copy = ContextTemp;
+
+            if (entity.IsNew)
+            {
+                entity.Id = NewId();
+                ContextTemp.Add(entity);
+            }
+            else
+            {
+                var existing = Single(entity.Id);
+                existing.Map(entity);
+            }
+        }
 
         public void Delete(int id)
         {

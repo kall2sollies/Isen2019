@@ -18,26 +18,5 @@ namespace Isen.DotNet.Library.Repositories.InMemory
                 new City() { Id = 4, Name = "Paris", ZipCode = "75000" },
                 new City() { Id = 5, Name = "Lyon", ZipCode = "69000" },
             };
-      
-       
-        public void Update(City entity)
-        {
-            if (entity == null) return;
-            
-            var copy = ContextTemp;
-
-            if (entity.IsNew)
-            {
-                entity.Id = NewId();
-                ContextTemp.Add(entity);
-            }
-            else
-            {
-                var existing = Single(entity.Id);
-                existing.Name = entity.Name;
-                existing.ZipCode = entity.ZipCode;
-            }
-        }
-        
     }
 }
