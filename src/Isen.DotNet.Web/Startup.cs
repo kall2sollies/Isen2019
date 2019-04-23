@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Isen.DotNet.Library.Context;
+using Isen.DotNet.Library.Repositories.Db;
 using Isen.DotNet.Library.Repositories.InMemory;
 using Isen.DotNet.Library.Repositories.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -50,8 +51,8 @@ namespace Isen.DotNet.Web
 
             // Mapping des interfaces de repo avec leur repo concret
             // Injection de dépendance
-            services.AddSingleton<ICityRepository, InMemoryCityRepository>();
-            services.AddSingleton<IPersonRepository, InMemoryPersonRepository>();
+            services.AddScoped<ICityRepository, DbContextCityRepository>();
+            services.AddScoped<IPersonRepository, DbContextPersonRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

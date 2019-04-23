@@ -491,3 +491,17 @@ EF.
 Implémnenter les méthodes de l'interface, et les reprendre
 depuis la version InMemory, en adaptant au fait d'utiliser
 `DbContext`.  
+
+Créer `DbContextCityRepository` et `DbContextPersonRepository`
+en dérivant de `BaseDbContextRepository` et en implémentant 
+les interfaces correspondantes (`ICityRepository` et 
+`IPersonRepository`).  
+
+Dans `Startup`, remplacer le mapping d'injection de dépendances
+de cette façon :
+
+```csharp
+services.AddScoped<ICityRepository, DbContextCityRepository>();
+services.AddScoped<IPersonRepository, DbContextPersonRepository>();
+```
+
