@@ -571,12 +571,16 @@ Dans `BaseModel`, créer une méthode `ToDynamic()` qui
 convertit l'instance en type dynamique, avec ses champs 
 de base.  
 
+### API : méthode unitaire
+
 Dans le `BaseController`, section API, ajouter une méthode
 `GetById`, et dont la route sera :
 `/api/[controller]/{id}.
 Cette méthode récupère l'objet ayant cet id, appelle 
 `ToDynamic()`, et sérialise en JSON.
 Ex : `/api/city/2`.  
+
+### API : méthode de liste
 
 Dans une API REST, `/api/city` devrait renvoyer la liste de
 tous les `City`.  Ajouter une méthode `GetAll` qui remplisse
