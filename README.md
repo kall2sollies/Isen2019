@@ -576,3 +576,8 @@ Dans le `BaseController`, section API, ajouter une méthode
 `/api/[controller]/{id}.
 Cette méthode récupère l'objet ayant cet id, appelle 
 `ToDynamic()`, et sérialise en JSON.
+Ex : `/api/city/2`.  
+
+Dans une API REST, `/api/city` devrait renvoyer la liste de
+tous les `City`.  Ajouter une méthode `GetAll` qui remplisse
+ce rôle.  

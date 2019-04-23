@@ -76,6 +76,17 @@ namespace Isen.DotNet.Web.Controllers
             return Json(entity.ToDynamic());
         }
 
+        [HttpGet]
+        [Route("api/[controller]")]
+        public virtual JsonResult GetAll()
+        {
+            var all = Repository
+                .GetAll()
+                .Select(e => e.ToDynamic())
+                .ToList();
+            return Json(all);
+        }
+
         #endregion
     }
 }
