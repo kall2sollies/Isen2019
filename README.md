@@ -554,3 +554,11 @@ Dans `DbContextCityRepository`, surcharger Inlcudes afin
 d'inclure la relation `City.PersonCollection`.  
 Dans la vue `City/Index`, ajouter une colonne qui indique
 le nombre de personnes dans la ville.  
+
+## Création d'une API REST
+
+Dans `BaseController`, ajouter une méthode `Status`
+et qui aura comme route `/api/{controller}/status`.  
+Cette méthode instancie un objet `dynamic` par l'intermédiaire
+de la classe `ExpandoObject` et le renvoie après l'avoir
+sérialisé en JSON.  

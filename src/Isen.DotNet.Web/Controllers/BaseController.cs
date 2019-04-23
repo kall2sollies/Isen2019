@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using Isen.DotNet.Library.Models;
@@ -12,12 +13,18 @@ namespace Isen.DotNet.Web.Controllers
         where T : BaseModel<T>
         where TRepo : IBaseRepository<T>
     {
+        #region Membres et constructeur
+
         protected readonly TRepo Repository;
 
         protected BaseController(TRepo repository)
         {
             Repository = repository;
         }
+
+        #endregion
+
+        #region Actions MVC
 
         public virtual IActionResult Index() => View(Repository.GetAll());
 
@@ -45,5 +52,21 @@ namespace Isen.DotNet.Web.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        #endregion
+
+        #region API
+
+        [HttpGet]
+        [Route("api/[controller]/status")]
+        public virtual JsonResult Status()
+        {
+            dynamic result = new ExpandoObject();
+            result.serverTime = DateTime.Now;
+            result.controller = typeof(T).Name;
+            return Json(result);
+        }
+
+        #endregion
     }
 }
