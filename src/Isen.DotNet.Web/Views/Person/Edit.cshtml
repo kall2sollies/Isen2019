@@ -2,7 +2,9 @@
     ViewData["Title"] = "Edition d'une ville";
 }
 @using Isen.DotNet.Library.Models
+@using Isen.DotNet.Library.Repositories.Interfaces
 @model Person
+@inject ICityRepository _cityRepository
 <h1>Edition d'une personne</h1>
 
 <div class="row">
@@ -48,6 +50,26 @@
                        placeholder="Date de naissance"
                        asp-for="DateOfBirth"
                        value="@dateString" />
+            </div>
+            
+            <div class="form-group">
+                <label for="BornIn">Ville de naissance</label>
+                @Html.DropDownListFor(
+                    // Quel champ du modèle (Person) est concerné
+                    p => p.BornIn,
+                    // Création d'une liste
+                    new SelectList(
+                        // Données de la liste
+                        _cityRepository.GetAll(),
+                        // Champ correspondant à l'id
+                        "Id",
+                        // Champ correspondant au texte affiché
+                        "Name"),
+                    // Item par défaut
+                    "Sélectionnez une ville...",
+                    // Ckasse CSS
+                    new { @class = "form-control" }
+                    )
             </div>
 
             <button type="submit" class="btn btn-primary">Valider</button>
