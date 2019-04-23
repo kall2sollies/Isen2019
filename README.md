@@ -404,3 +404,12 @@ services.AddSingleton<ICityRepository, InMemoryCityRepository>();
 // la même requête HTTP
 services.AddTransient<ICityRepository, InMemoryCityRepository>();
 ```
+
+### Application de l'ensemble de la chaîne au modèle `Person`
+
+Echauffauder (scadffolfing) le même principe pour avoir 2 formulaires d'édition
+de personne :
+* Ajouter une entrée au menu
+* Ajouter un contrôleur `PersonController`
+* Ajouter la vue `Index` avec tableau des personnes
+* Ajouter la vue `Edit` avec formulaire d'édition de `Person`

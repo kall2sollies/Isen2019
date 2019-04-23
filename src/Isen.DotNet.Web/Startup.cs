@@ -38,6 +38,7 @@ namespace Isen.DotNet.Web
             // Mapping des interfaces de repo avec leur repo concret
             // Injection de dépendance
             services.AddSingleton<ICityRepository, InMemoryCityRepository>();
+            services.AddSingleton<IPersonRepository, InMemoryPersonRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
