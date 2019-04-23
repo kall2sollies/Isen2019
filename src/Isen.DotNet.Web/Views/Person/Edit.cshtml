@@ -56,7 +56,7 @@
                 <label for="BornIn">Ville de naissance</label>
                 @Html.DropDownListFor(
                     // Quel champ du modèle (Person) est concerné
-                    p => p.BornIn,
+                    p => p.BornInId,
                     // Création d'une liste
                     new SelectList(
                         // Données de la liste

@@ -28,13 +28,13 @@ namespace Isen.DotNet.Library.Repositories.Db
 
         // TODO : factoriser avec BaseInMemoryRepository
         public T Single(int id) => 
-            Context.SingleOrDefault(c => c.Id == id);
+            Includes(Context).SingleOrDefault(c => c.Id == id);
         public T Single(string name) => 
-            Context.FirstOrDefault(c => c.Name.Equals(name));
+            Includes(Context).SingleOrDefault(c => c.Name.Equals(name));
 
-        public IEnumerable<T> GetAll() => Context;    
+        public IEnumerable<T> GetAll() => Includes(Context);    
         public IEnumerable<T> Find(Func<T, bool> predicate) => 
-            Context.AsEnumerable().Where(predicate);
+            Includes(Context).AsEnumerable().Where(predicate);
 
         public void Update(T entity)
         {

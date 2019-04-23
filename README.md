@@ -539,3 +539,10 @@ de la bdd.
 Dans `BaseDbRepositories`, ajouter une méthode virtuelle
 permettant de préciser quelle(s) relation(s) doivent être
 requêtées.
+
+Dans `BaseDbRepositories`, appeler cette méthode dans
+Single, GetAll et Find.  
+
+Dans `DbContextPersonRepository`, surcharger la méthode
+`Includes` afin de demander le chargement de la relation
+`Person.BornIn`.  
