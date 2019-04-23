@@ -415,3 +415,4 @@ de personne :
   champ city
 * Ajouter la vue `Edit` avec formulaire d'édition de `Person`.  Ne pas tenir 
   compte du champ city
+* Implémenter la suppression depuis la liste

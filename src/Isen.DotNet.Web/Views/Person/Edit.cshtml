@@ -33,6 +33,12 @@
                        asp-for="FirstName"
                        value="@Model?.FirstName" />
             </div>
+            
+            @{
+                var dateString = Model?.DateOfBirth
+                    .GetValueOrDefault(DateTime.MinValue)
+                    .ToString("dd/MM/yyyy");
+            }
 
             <div class="form-group">
                 <label for="DateOfBirth">Date de naissance</label>
@@ -41,7 +47,7 @@
                        class="form-control"
                        placeholder="Date de naissance"
                        asp-for="DateOfBirth"
-                       value="@Model?.DateOfBirth.GetValueOrDefault(DateTime.MinValue).ToString("dd/MM/yyyy")" />
+                       value="@dateString" />
             </div>
 
             <button type="submit" class="btn btn-primary">Valider</button>

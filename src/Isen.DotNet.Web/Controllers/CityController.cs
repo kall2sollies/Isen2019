@@ -36,5 +36,15 @@ namespace Isen.DotNet.Web.Controllers
             _repository.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public IActionResult Delete(int? id)
+        {
+            if (id != null)
+            {
+                _repository.Delete(id.Value);
+                _repository.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
