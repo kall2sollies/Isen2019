@@ -472,3 +472,6 @@ Ajouter les `DbSet<>` correspondant aux classes du modèle.
 Implémenter le constructeur avec options, et appeller `base()`.  
 Surcharger `OnModelConfiguring()` et préciser les tables
 et relations.  
+
+Préciser dans `Startup` que l'on utilise Entity Framework avec
+une base de données Sqlite.  
