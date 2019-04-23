@@ -534,3 +534,8 @@ collection des services injectés, afin de récupérer
 un `SeedData`, et appeler les méthodes d'initialisation 
 de la bdd.  
 
+### Ajout des inclusions de données avec EF
+
+Dans `BaseDbRepositories`, ajouter une méthode virtuelle
+permettant de préciser quelle(s) relation(s) doivent être
+requêtées.

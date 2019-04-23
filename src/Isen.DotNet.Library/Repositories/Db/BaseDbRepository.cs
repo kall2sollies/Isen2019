@@ -50,5 +50,7 @@ namespace Isen.DotNet.Library.Repositories.Db
 
         public void Delete(T entity) => DbContext.Remove(entity);
 
+        public virtual IQueryable<T> Includes(IQueryable<T> includes)
+            => includes;
     }
 }
