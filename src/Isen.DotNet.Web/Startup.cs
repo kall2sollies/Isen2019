@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Isen.DotNet.Library.Repositories.InMemory;
+using Isen.DotNet.Library.Repositories.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -31,8 +33,11 @@ namespace Isen.DotNet.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            // Mapping des interfaces de repo avec leur repo concret
+            // Injection de dépendance
+            services.AddSingleton<ICityRepository, InMemoryCityRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -375,3 +375,32 @@ données saisies dans les champs du formulaire.
 
 Dans la vue Edit, ajouter un champ caché, qui permettra de conserver la valeur
 de l'id entre l'affichage du formulaire, et son post.  
+
+### Utilisation du repository en injection de dépendances.
+
+Dans le contrôleur, réécrire le constructeur de façon à ce qu'il ait besoin
+d'un `ICityRepository` pour pouvoir s'exécuter. Le contrôleur, au travers de
+son constructeur, va explicitement exprimer sa (ou ses) dépendances :
+j'ai besoin d'un `ICityRepository` pour fonctionner.  
+
+L'instanciation du `InMemoryCityRepository` a maintenanant disparu du
+constructeur, il faut donc indiquer quelque part que lorsqu'un constructeur
+requiert un `ICityRepository`, alors, on doit lui fournir un 
+`InMemoryCityRepository`.
+
+Ceci est précisé dans `Startup.cs`:
+
+```csharp
+// AddScoped : nouvelle instance à chaque requête HTTP, 
+// Partage de la même instance si on y fait au sein de la même requête
+services.AddScoped<ICityRepository, InMemoryCityRepository>();
+
+// AddSingleton : instance unique, créée au premier appel,
+// et donc partagée d'une requête HTTP à l'autre, pendant tout le cycle
+// de vie du serveur.
+services.AddSingleton<ICityRepository, InMemoryCityRepository>();
+
+// AddTransient : nouvelle instance à tout appel, et même au sein de
+// la même requête HTTP
+services.AddTransient<ICityRepository, InMemoryCityRepository>();
+```

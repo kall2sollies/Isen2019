@@ -15,9 +15,9 @@ namespace Isen.DotNet.Web.Controllers
     {
         private readonly ICityRepository _repository;
 
-        public CityController()
+        public CityController(ICityRepository repository)
         {
-            _repository = new InMemoryCityRepository();
+            _repository = repository;
         }
         public IActionResult Index() => View(_repository.GetAll());
 
