@@ -475,3 +475,19 @@ et relations.
 
 Préciser dans `Startup` que l'on utilise Entity Framework avec
 une base de données Sqlite.  
+
+### Création de repositories basés sur EF
+
+Actuellement :
+* `IBaseRepository` : signatures CRUD + accès à un contexte
+* `BaseInMemoryRespository` : Accès à un contexte Mock (en mémoire) 
+
+Créer une classe `BaseDbRepository` qui implémente 
+`IBaseRepository`.  
+
+Ajouter un champ `DbContext`, permettant d'accéder au contexte
+EF.  
+
+Implémnenter les méthodes de l'interface, et les reprendre
+depuis la version InMemory, en adaptant au fait d'utiliser
+`DbContext`.  
