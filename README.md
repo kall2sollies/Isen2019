@@ -318,18 +318,43 @@ Ajouter la navigation suivante dans le fichier _Layout.cshtml :
   * Ajouter... (afficher un formulaire de saisie vide)  
     `https://localhost:5001/City/Edit/`
 
-Lorsqu'on cliquera sur une ville dans la liste, on pourra l'éditer avec une url du type `https://localhost:5001/City/Edit/2` qui appellera en fait la vue "Ajouter", qui servira aussi bien à la création qu'à la modification.  
+Lorsqu'on cliquera sur une ville dans la liste, 
+on pourra l'éditer avec une url du type 
+`https://localhost:5001/City/Edit/2` qui appellera 
+en fait la vue "Ajouter", 
+qui servira aussi bien à la création qu'à la modification.  
 
 ## Ajouter le contrôleur CityController
 
-Dans le dossier des contrôleurs, créer `CityController.cs` et ajouter les méthodes correspondant aux 2 actions prévues (Index, Edit).  
+Dans le dossier des contrôleurs, 
+créer `CityController.cs` et ajouter les méthodes 
+correspondant aux 2 actions prévues (Index, Edit).  
 
 ## Ajouter les vues correspondantes
 
 ### Vues vides
 
-Dupliquer le dossier Home et le nommer `City`, vider et adapter les vues : enlever tout le html existant, et mettre juste un titre dans chaque vue.  
+Dupliquer le dossier Home et le nommer `City`, 
+vider et adapter les vues : enlever tout le html 
+existant, et mettre juste un titre dans chaque vue.  
 
 ### Maquette du tableau
-Utiliser les éléments de tableaux en layout Bootstrap issus de cette doc : https://getbootstrap.com/docs/4.1/content/tables/ Ex : Striped rows
+Utiliser les éléments de tableaux en layout Bootstrap 
+issus de cette doc : 
+https://getbootstrap.com/docs/4.1/content/tables/ 
+Ex : Striped rows
 
+### Injection d'un modèle dans la vue liste / tableau
+
+Dans `CityController`, instantier un `ICityRepository`, de type concret
+`InMemoryCityRepository`. Récupérer la liste des villes, et la passer à la 
+vue.  
+
+Dans la vue `City/Index.cshtml`, préciser le type du modèle en syntaxe Razor : 
+`IEnumerable<City>`, avec les directives `@using` et `@model`.  
+
+Itérer le bloc html `<tr>...</tr>' avec une directive `@foreach`. Puis 
+remplacer les valeurs hard-codées du tableau, par les champs de la variable city.
+
+Ajouter les attributs de construction d'URL sur les 2 liens `<a>` (Modifier,
+supprimer)
