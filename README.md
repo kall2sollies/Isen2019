@@ -419,3 +419,20 @@ de personne :
 
 Ajouter le champ `Person.BorIn (City)` dans le formulaire d'édition.
 Ce champ sera une liste déroulante contenant toutes les villes.
+
+### Refactoring
+
+On se rend compte que le code des 2 contrôleurs est très similaire, puisque
+seul le nom des classes change.
+
+Créer un `BaseController`, modifier l'héritage des 2 contrôleurs existants, 
+puis basculer dans `BaseController` tout ce qui peut être mutualisé.
+
+Rendre `BaseController` générique, en lui permettant d'accepter un type de 
+modèle, et un type d'interface de repository:
+
+```csharp
+public abstract class BaseController<T, TRepo> : Controller
+    where T : BaseModel<T>
+    where TRepo : IBaseRepository<T>
+```

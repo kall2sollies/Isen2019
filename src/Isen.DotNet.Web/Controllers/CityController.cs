@@ -11,29 +11,26 @@ using Isen.DotNet.Web.Models;
 
 namespace Isen.DotNet.Web.Controllers
 {
-    public class CityController : Controller
+    public class CityController : BaseController<City, ICityRepository>
     {
-        private readonly ICityRepository _repository;
-
-        public CityController(ICityRepository repository)
+        public CityController(ICityRepository repository) : base(repository)
         {
-            _repository = repository;
         }
 
-        public IActionResult Index() => View(_repository.GetAll());
+        public IActionResult Index() => View(Repository.GetAll());
 
         [HttpGet] // facultatif car par défaut
         public IActionResult Edit(int? id)
         {
             if (id == null) return View();
-            return View(_repository.Single(id.Value));
+            return View(Repository.Single(id.Value));
         }
 
         [HttpPost]
         public IActionResult Edit(int id, [Bind] City model)
         {
-            _repository.Update(model);
-            _repository.SaveChanges();
+            Repository.Update(model);
+            Repository.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -41,8 +38,8 @@ namespace Isen.DotNet.Web.Controllers
         {
             if (id != null)
             {
-                _repository.Delete(id.Value);
-                _repository.SaveChanges();
+                Repository.Delete(id.Value);
+                Repository.SaveChanges();
             }
             return RedirectToAction("Index");
         }
