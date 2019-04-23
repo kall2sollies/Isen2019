@@ -1,10 +1,12 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Isen.DotNet.Library.Models
 {
     public class Person : BaseModel<Person>
     {
         public override int Id { get;set; }
+        [NotMapped]
         public override string Name
         {
             get { return _name ?? 
@@ -25,6 +27,7 @@ namespace Isen.DotNet.Library.Models
         // de la ville)
         public int? BornInId { get;set; }
 
+        [NotMapped]
         public int? Age
         {
             get
@@ -38,6 +41,7 @@ namespace Isen.DotNet.Library.Models
             }
         }
 
+        [NotMapped]
         public override string Display
         {
             get

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace Isen.DotNet.Library.Models
@@ -15,6 +16,7 @@ namespace Isen.DotNet.Library.Models
         public List<Person> PersonCollection { get; set; } =
             new List<Person>();
 
+        [NotMapped]
         public override string Display => 
             $"{base.Display}|ZipCode={ZipCode}";
 

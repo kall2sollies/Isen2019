@@ -505,3 +505,18 @@ services.AddScoped<ICityRepository, DbContextCityRepository>();
 services.AddScoped<IPersonRepository, DbContextPersonRepository>();
 ```
 
+### Initialisation de la base de données
+
+Dans le projet Library, dossier Context, créer une classe
+`SeedData`.  
+Par injection de dépendances, permettre l'accès au contexte
+et aux 2 repositories.  
+
+Ajouter une fonction pour détruire / recréer la bdd.  
+
+Ajouter 2 méthodes pour :
+* Créer les villes
+* Créer les personnes, en leur affectant des villes
+
+Sur les classes City et Person, ajouter l'attribut `[NotMapped]` 
+sur les champs qui ne doivent pas être en base de données.
