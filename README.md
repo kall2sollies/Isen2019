@@ -350,7 +350,7 @@ Dans `CityController`, instantier un `ICityRepository`, de type concret
 `InMemoryCityRepository`. Récupérer la liste des villes, et la passer à la 
 vue.  
 
-Dans la vue `City/Index.cshtml`, préciser le type du modèle en syntaxe Razor : 
+Dans la vue `/Views/City/Index.cshtml`, préciser le type du modèle en syntaxe Razor : 
 `IEnumerable<City>`, avec les directives `@using` et `@model`.  
 
 Itérer le bloc html `<tr>...</tr>' avec une directive `@foreach`. Puis 
@@ -358,3 +358,13 @@ remplacer les valeurs hard-codées du tableau, par les champs de la variable cit
 
 Ajouter les attributs de construction d'URL sur les 2 liens `<a>` (Modifier,
 supprimer)
+
+### Construction de la vue d'édition
+
+Dans `/Views/City/Edit.cshtml`, ajouter 2 champs texte pour `City.Name`
+et `City.ZipCode` et 2 boutons (validation, annulation).  
+
+Dans le contrôleur, injecter les données (la ville sélectctionnée) dans l'action
+Edit.  
+
+Dans la vue, lier les données du modèle aux champs du formulaire.  
