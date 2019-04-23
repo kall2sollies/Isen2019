@@ -53,6 +53,8 @@ namespace Isen.DotNet.Web
             // Injection de dépendance
             services.AddScoped<ICityRepository, DbContextCityRepository>();
             services.AddScoped<IPersonRepository, DbContextPersonRepository>();
+            // Mapping du SeedData
+            services.AddScoped<SeedData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

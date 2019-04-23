@@ -520,3 +520,17 @@ Ajouter 2 méthodes pour :
 
 Sur les classes City et Person, ajouter l'attribut `[NotMapped]` 
 sur les champs qui ne doivent pas être en base de données.
+
+### Appel de l'initialisation
+
+Ajouter `SeedData` au conteneur Ioc 
+(injection de dépendances) :
+```csharp
+services.AddScoped<SeedData>();
+```
+
+Dans Program.cs, récupérer une instance de la 
+collection des services injectés, afin de récupérer 
+un `SeedData`, et appeler les méthodes d'initialisation 
+de la bdd.  
+
