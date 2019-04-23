@@ -546,3 +546,11 @@ Single, GetAll et Find.
 Dans `DbContextPersonRepository`, surcharger la méthode
 `Includes` afin de demander le chargement de la relation
 `Person.BornIn`.  
+
+Corriger le `Edit` de la vue Person afin qu'il cible le champ
+`Person.BornInId`.  
+
+Dans `DbContextCityRepository`, surcharger Inlcudes afin 
+d'inclure la relation `City.PersonCollection`.  
+Dans la vue `City/Index`, ajouter une colonne qui indique
+le nombre de personnes dans la ville.  

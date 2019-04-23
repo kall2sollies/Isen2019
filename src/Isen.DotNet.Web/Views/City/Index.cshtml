@@ -8,12 +8,13 @@
 
 <table class="table table-striped">
   <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Nom</th>
-      <th scope="col">Code postal</th>
-      <th>Action...</th>
-    </tr>
+      <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Code postal</th>
+          <th scope="col">Personne(s)</th>
+          <th>Action...</th>
+      </tr>
   </thead>
   <tbody>
     @foreach(var city in Model)
@@ -22,6 +23,7 @@
           <th scope="row">@city.Id</th>
           <td>@city.Name</td>
           <td>@city.ZipCode</td>
+          <td>@city.PersonCollection?.Count</td>
           <td>
               <a class="btn btn-outline-primary"
                  asp-controller="City"
