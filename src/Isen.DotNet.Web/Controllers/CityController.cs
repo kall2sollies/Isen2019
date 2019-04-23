@@ -16,32 +16,5 @@ namespace Isen.DotNet.Web.Controllers
         public CityController(ICityRepository repository) : base(repository)
         {
         }
-
-        public IActionResult Index() => View(Repository.GetAll());
-
-        [HttpGet] // facultatif car par défaut
-        public IActionResult Edit(int? id)
-        {
-            if (id == null) return View();
-            return View(Repository.Single(id.Value));
-        }
-
-        [HttpPost]
-        public IActionResult Edit(int id, [Bind] City model)
-        {
-            Repository.Update(model);
-            Repository.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        public IActionResult Delete(int? id)
-        {
-            if (id != null)
-            {
-                Repository.Delete(id.Value);
-                Repository.SaveChanges();
-            }
-            return RedirectToAction("Index");
-        }
     }
 }

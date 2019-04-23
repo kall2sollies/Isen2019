@@ -436,3 +436,7 @@ public abstract class BaseController<T, TRepo> : Controller
     where T : BaseModel<T>
     where TRepo : IBaseRepository<T>
 ```
+
+Mutaliser le constructeur et la variable membre de repository.
+
+Mutualiser les méthodes Index, Edit, Edit (post), Delete

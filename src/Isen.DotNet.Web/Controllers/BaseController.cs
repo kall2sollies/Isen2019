@@ -18,5 +18,32 @@ namespace Isen.DotNet.Web.Controllers
         {
             Repository = repository;
         }
+
+        public virtual IActionResult Index() => View(Repository.GetAll());
+
+        [HttpGet] // facultatif car par défaut
+        public virtual IActionResult Edit(int? id)
+        {
+            if (id == null) return View();
+            return View(Repository.Single(id.Value));
+        }
+
+        [HttpPost]
+        public virtual IActionResult Edit(int id, [Bind] T model)
+        {
+            Repository.Update(model);
+            Repository.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public virtual IActionResult Delete(int? id)
+        {
+            if (id != null)
+            {
+                Repository.Delete(id.Value);
+                Repository.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
