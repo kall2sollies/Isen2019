@@ -70,6 +70,7 @@ namespace Isen.DotNet.Library.Models
             baseDynamic.last = LastName;
             baseDynamic.birth = DateOfBirth;
             baseDynamic.age = Age;
+            baseDynamic.bornIn = BornIn?.ToDynamic();
             return baseDynamic;
         }
     }

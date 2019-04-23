@@ -591,4 +591,9 @@ ce rôle.
 Surcharger `Person.ToDynamic()` afin d'ajouter FirstName,
 LastName, DateOfBirth et Age.
 
-De la même façon, ajouter à City le nombre de personnes.  
+De la même façon, ajouter à City le nombre de personnes. 
+
+### Imbrication
+
+Surcharger de nouveau le JSON de Person, afin d'inclure
+l'objet City entier, lui aussi sérialisé.   
