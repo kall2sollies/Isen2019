@@ -25,5 +25,12 @@ namespace Isen.DotNet.Library.Models
             base.Map(copy);
             ZipCode = copy.ZipCode;
         }
+
+        public override dynamic ToDynamic()
+        {
+            var baseDynamic = base.ToDynamic();
+            baseDynamic.nb = PersonCollection?.Count;
+            return baseDynamic;
+        }
     }
 }

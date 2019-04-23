@@ -586,7 +586,9 @@ Dans une API REST, `/api/city` devrait renvoyer la liste de
 tous les `City`.  Ajouter une méthode `GetAll` qui remplisse
 ce rôle.  
 
-### Enrichir les objets Person
+### Enrichir les objets Person et City
 
 Surcharger `Person.ToDynamic()` afin d'ajouter FirstName,
 LastName, DateOfBirth et Age.
+
+De la même façon, ajouter à City le nombre de personnes.  
