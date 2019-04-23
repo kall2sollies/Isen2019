@@ -62,5 +62,15 @@ namespace Isen.DotNet.Library.Models
             DateOfBirth = copy.DateOfBirth;
             BornIn = copy.BornIn;
         }
+
+        public override dynamic ToDynamic()
+        {
+            var baseDynamic = base.ToDynamic();
+            baseDynamic.first = FirstName;
+            baseDynamic.last = LastName;
+            baseDynamic.birth = DateOfBirth;
+            baseDynamic.age = Age;
+            return baseDynamic;
+        }
     }
 }

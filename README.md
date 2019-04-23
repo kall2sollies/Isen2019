@@ -585,3 +585,8 @@ Ex : `/api/city/2`.
 Dans une API REST, `/api/city` devrait renvoyer la liste de
 tous les `City`.  Ajouter une méthode `GetAll` qui remplisse
 ce rôle.  
+
+### Enrichir les objets Person
+
+Surcharger `Person.ToDynamic()` afin d'ajouter FirstName,
+LastName, DateOfBirth et Age.
