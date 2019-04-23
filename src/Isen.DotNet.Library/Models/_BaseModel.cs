@@ -1,4 +1,5 @@
 using System;
+using System.Dynamic;
 
 namespace Isen.DotNet.Library.Models
 {
@@ -19,6 +20,15 @@ namespace Isen.DotNet.Library.Models
         public virtual void Map(T copy)
         {
             Name = copy.Name;
+        }
+
+        public virtual dynamic ToDynamic()
+        {
+            dynamic response = new ExpandoObject();
+            response.id = Id;
+            response.name = Name;
+            response.fetch = DateTime.Now;
+            return response;
         }
     }
 }

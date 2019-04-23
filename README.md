@@ -557,8 +557,22 @@ le nombre de personnes dans la ville.
 
 ## Création d'une API REST
 
+### Test 
+
 Dans `BaseController`, ajouter une méthode `Status`
 et qui aura comme route `/api/{controller}/status`.  
 Cette méthode instancie un objet `dynamic` par l'intermédiaire
 de la classe `ExpandoObject` et le renvoie après l'avoir
 sérialisé en JSON.  
+
+### Mise en place d'un mécanisme de sérialisation avec surcharges
+
+Dans `BaseModel`, créer une méthode `ToDynamic()` qui 
+convertit l'instance en type dynamique, avec ses champs 
+de base.  
+
+Dans le `BaseController`, section API, ajouter une méthode
+`GetById`, et dont la route sera :
+`/api/[controller]/{id}.
+Cette méthode récupère l'objet ayant cet id, appelle 
+`ToDynamic()`, et sérialise en JSON.
