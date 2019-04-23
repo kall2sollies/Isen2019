@@ -368,3 +368,10 @@ Dans le contrôleur, injecter les données (la ville sélectctionnée) dans l'ac
 Edit.  
 
 Dans la vue, lier les données du modèle aux champs du formulaire.  
+
+Dans le contrôleur, ajouter une 2ème action Edit, en `HTTP POST`. Cette action
+prend un `City` en paramètre, et cette instance de `City` correspondra aux
+données saisies dans les champs du formulaire. 
+
+Dans la vue Edit, ajouter un champ caché, qui permettra de conserver la valeur
+de l'id entre l'affichage du formulaire, et son post.  

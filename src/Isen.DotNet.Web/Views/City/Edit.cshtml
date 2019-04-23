@@ -8,8 +8,12 @@
 <div class="row">
     <div class="col-12">
         
-        <form class="form-group">
+        <form class="form-group" asp-action="Edit">
             
+            <input type="hidden" 
+                   asp-for="Id"
+                   value="@Model.Id" />
+
             <div class="form-group">
                 <label for="cityName">Nom de la ville</label>
                 <input id="cityName"
