@@ -444,7 +444,7 @@ Mutualiser les méthodes Index, Edit, Edit (post), Delete
 ## Utilisation d'une base de données
 
 Base de donnée utilisée : `Sqlite`  
-Framework ORM : Entity Framework
+Framework ORM : Entity Framework (EF)
 
 ### Ajouter au projet les références nécessaires
 
@@ -453,9 +453,22 @@ En CLI : naviguer vers le dossier du projet Library, puis
 `dotnet add package Microsoft.EntityFrameworkCore.Design`
 
 ### Chaine de connexion
-Dans `appsettings.json (racine du projet web), ajouter :
+Dans `appsettings.json` (racine du projet web), ajouter :
 ```
 "ConnectionStrings" : {
     "DefaultConnection" :  "DataSource=.\\IsenWeb.db" 
   },
 ```
+
+### Création du contexte
+
+Dans le modèle Person, ajouter un champ `BornInId`.
+
+Dans le projet Library, ajouter un dossier `Context`
+puis une classe `ApplicationDbContext` et qui 
+dérive de `DbContext`.
+
+Ajouter les `DbSet<>` correspondant aux classes du modèle.  
+Implémenter le constructeur avec options, et appeller `base()`.  
+Surcharger `OnModelConfiguring()` et préciser les tables
+et relations.  

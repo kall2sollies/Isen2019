@@ -21,6 +21,9 @@ namespace Isen.DotNet.Library.Models
         // Relation réciproque de 
         // City.PersonCollection (List<Person>)
         public City BornIn { get;set; }
+        // Clé étrangère du champ BornIn (donc l'id
+        // de la ville)
+        public int? BornInId { get;set; }
 
         public int? Age
         {
