@@ -440,3 +440,22 @@ public abstract class BaseController<T, TRepo> : Controller
 Mutaliser le constructeur et la variable membre de repository.
 
 Mutualiser les méthodes Index, Edit, Edit (post), Delete
+
+## Utilisation d'une base de données
+
+Base de donnée utilisée : `Sqlite`  
+Framework ORM : Entity Framework
+
+### Ajouter au projet les références nécessaires
+
+En CLI : naviguer vers le dossier du projet Library, puis
+`dotnet add package Microsoft.EntityFrameworkCore.Sqlite`  
+`dotnet add package Microsoft.EntityFrameworkCore.Design`
+
+### Chaine de connexion
+Dans `appsettings.json (racine du projet web), ajouter :
+```
+"ConnectionStrings" : {
+    "DefaultConnection" :  "DataSource=.\\IsenWeb.db" 
+  },
+```
