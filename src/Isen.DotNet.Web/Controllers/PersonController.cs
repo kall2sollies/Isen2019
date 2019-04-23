@@ -1,21 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Isen.DotNet.Library.Models;
-using Isen.DotNet.Library.Repositories.InMemory;
 using Isen.DotNet.Library.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Isen.DotNet.Web.Models;
 
 namespace Isen.DotNet.Web.Controllers
 {
-    public class CityController : Controller
+    public class PersonController : Controller
     {
-        private readonly ICityRepository _repository;
+        private readonly IPersonRepository _repository;
 
-        public CityController(ICityRepository repository)
+        public PersonController(IPersonRepository repository)
         {
             _repository = repository;
         }
@@ -30,7 +23,7 @@ namespace Isen.DotNet.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(int id, [Bind] City model)
+        public IActionResult Edit(int id, [Bind] Person model)
         {
             _repository.Update(model);
             _repository.SaveChanges();

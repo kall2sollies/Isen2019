@@ -411,5 +411,7 @@ Echauffauder (scadffolfing) le même principe pour avoir 2 formulaires d'éditio
 de personne :
 * Ajouter une entrée au menu
 * Ajouter un contrôleur `PersonController`
-* Ajouter la vue `Index` avec tableau des personnes
-* Ajouter la vue `Edit` avec formulaire d'édition de `Person`
+* Ajouter la vue `Index` avec tableau des personnes. Ne pas tenir compte du 
+  champ city
+* Ajouter la vue `Edit` avec formulaire d'édition de `Person`.  Ne pas tenir 
+  compte du champ city
