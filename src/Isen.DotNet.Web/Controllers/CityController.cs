@@ -29,7 +29,7 @@ namespace Isen.DotNet.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(City model)
+        public IActionResult Edit(int id, [Bind] City model)
         {
             _repository.Update(model);
             _repository.SaveChanges();
